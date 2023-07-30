@@ -1,0 +1,57 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Arial";
+    margin:0;
+    
+}
+
+
+header {
+    
+    height: 20px;
+    background-color: purple;
+    text-align: center;
+    color: aliceblue;
+    text-decoration: solid;
+    
+}
+
+#wrapper {
+    display: flex;
+}
+
+.search  {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+.search button {
+    color: aliceblue;
+    background-color: purple;
+    border-radius: 20px;
+    
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+.displayCity {
+    
+    border: solid 1px;
+    width: 100%;
+}
+
+.fiveDays {
+    
+    border: solid 1px;
+    width: 100%;
+}
