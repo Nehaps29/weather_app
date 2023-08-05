@@ -38,7 +38,8 @@ function getDetails(lat, lon){
     //console.log(data.list[0].weather[0].icon)
     icon_code = data.list[0].weather[0].icon;
     console.log(icon_code);
-    date.innerHTML = "Date: "+data.list[0].dt_txt;
+    var d = data.list[0].dt_txt.split(" ");
+    date.innerHTML = "Date: "+ data.list[0].dt_txt.split(" ")[0].toString();
     humidity.innerHTML = "Humidity: " + data.list[0].main.humidity;
     speed.innerHTML = "Speed: " + data.list[0].wind.speed;
     temp.innerHTML = "Temp: " + data.list[0].main.temp;
@@ -56,11 +57,11 @@ function getDetails(lat, lon){
     var humidity1 = document.createElement("div");
     var speed1 = document.createElement("div");
     var date1 = document.createElement("div");
-    date1.innerHTML = "Date: "+data.list[8].dt_txt;
-    humidity1.innerHTML = "Humidity: " + data.list[8].main.humidity;
-    speed1.innerHTML = "Speed: " + data.list[8].wind.speed;
-    temp1.innerHTML = "Temp: " + data.list[8].main.temp;
-    icon_code1 = data.list[8].weather[0].icon;
+    date1.innerHTML = "Date: "+data.list[7].dt_txt.split(" ")[0].toString();
+    humidity1.innerHTML = "Humidity: " + data.list[7].main.humidity;
+    speed1.innerHTML = "Speed: " + data.list[7].wind.speed;
+    temp1.innerHTML = "Temp: " + data.list[7].main.temp;
+    icon_code1 = data.list[7].weather[0].icon;
     icon1.src = `https://openweathermap.org/img/wn/${icon_code1}@2x.png`
     var day1 = document.createElement("div");
     day1.append(date1);
@@ -76,11 +77,11 @@ function getDetails(lat, lon){
     var humidity2 = document.createElement("div");
     var speed2 = document.createElement("div");
     var date2 = document.createElement("div");
-    date2.innerHTML = "Date: "+data.list[16].dt_txt;
-    humidity2.innerHTML = "Humidity: " + data.list[16].main.humidity;
-    speed2.innerHTML = "Speed: " + data.list[16].wind.speed;
-    temp2.innerHTML = "Temp: " + data.list[16].main.temp;
-    icon_code2 = data.list[16].weather[0].icon;
+    date2.innerHTML = "Date: "+data.list[15].dt_txt.split(" ")[0].toString();
+    humidity2.innerHTML = "Humidity: " + data.list[15].main.humidity;
+    speed2.innerHTML = "Speed: " + data.list[15].wind.speed;
+    temp2.innerHTML = "Temp: " + data.list[15].main.temp;
+    icon_code2 = data.list[15].weather[0].icon;
     icon2.src = `https://openweathermap.org/img/wn/${icon_code2}@2x.png`
     var day2 = document.createElement("div");
     day2.append(date2);
@@ -91,6 +92,69 @@ function getDetails(lat, lon){
     day2El.innerHTML="";
     day2El.append(day2);
     fiveDaysEl.append(day2El);
+    var icon3 = document.createElement("img");
+    var temp3 = document.createElement("div");
+    var humidity3 = document.createElement("div");
+    var speed3 = document.createElement("div");
+    var date3 = document.createElement("div");
+    date3.innerHTML = "Date: "+data.list[23].dt_txt.split(" ")[0].toString();
+    humidity3.innerHTML = "Humidity: " + data.list[23].main.humidity;
+    speed3.innerHTML = "Speed: " + data.list[23].wind.speed;
+    temp3.innerHTML = "Temp: " + data.list[23].main.temp;
+    icon_code3 = data.list[23].weather[0].icon;
+    icon3.src = `https://openweathermap.org/img/wn/${icon_code3}@2x.png`
+    var day3 = document.createElement("div");
+    day3.append(date3);
+    day3.append(temp3);
+    day3.append(humidity3);
+    day3.append(speed3);
+    day3.append(icon3);
+    day3El.innerHTML="";
+    day3El.append(day3);
+    fiveDaysEl.append(day3El);
+    
+    var icon4 = document.createElement("img");
+    var temp4 = document.createElement("div");
+    var humidity4 = document.createElement("div");
+    var speed4 = document.createElement("div");
+    var date4 = document.createElement("div");
+    date4.innerHTML = "Date: "+data.list[31].dt_txt.split(" ")[0].toString();
+    humidity4.innerHTML = "Humidity: " + data.list[31].main.humidity;
+    speed4.innerHTML = "Speed: " + data.list[31].wind.speed;
+    temp4.innerHTML = "Temp: " + data.list[31].main.temp;
+    icon_code4 = data.list[31].weather[0].icon;
+    icon4.src = `https://openweathermap.org/img/wn/${icon_code4}@2x.png`
+    var day4 = document.createElement("div");
+    day4.append(date4);
+    day4.append(temp4);
+    day4.append(humidity4);
+    day4.append(speed4);
+    day4.append(icon4);
+    day4El.innerHTML="";
+    day4El.append(day4);
+    fiveDaysEl.append(day4El);
+
+
+    var icon5 = document.createElement("img");
+    var temp5 = document.createElement("div");
+    var humidity5 = document.createElement("div");
+    var speed5 = document.createElement("div");
+    var date5 = document.createElement("div");
+    date5.innerHTML = "Date: "+data.list[39].dt_txt.split(" ")[0].toString();
+    humidity5.innerHTML = "Humidity: " + data.list[39].main.humidity;
+    speed5.innerHTML = "Speed: " + data.list[39].wind.speed;
+    temp5.innerHTML = "Temp: " + data.list[39].main.temp;
+    icon_code5 = data.list[39].weather[0].icon;
+    icon5.src = `https://openweathermap.org/img/wn/${icon_code5}@2x.png`
+    var day5 = document.createElement("div");
+    day5.append(date5);
+    day5.append(temp5);
+    day5.append(humidity5);
+    day5.append(speed5);
+    day5.append(icon5);
+    day5El.innerHTML="";
+    day5El.append(day5);
+    fiveDaysEl.append(day5El);
     
    
  /* for (var i = 0; i<data.list.length; i=i+8){
@@ -130,6 +194,7 @@ function getLocation(){
   searchedCityEl.innerHTML = "";
   for (var i =0; i<displaySelectedCity.length; i++){
     var oldCity = document.createElement("div");
+    oldCity.setAttribute("id", displaySelectedCity[i]);
     oldCity.innerHTML = displaySelectedCity[i];
     console.log(displaySelectedCity[i]);
     

@@ -25,6 +25,7 @@ header {
     display: flex;
 }
 
+
 .search  {
     display: flex;
     flex-direction: column;
@@ -51,7 +52,13 @@ header {
 }
 
 .fiveDays {
+    display: flex;
+    flex-direction: row;
     
-    border: solid 1px;
     width: 100%;
+}
+
+#day1, #day2, #day3, #day4, #day5 {
+    
+    margin-right: 30px;
 }
