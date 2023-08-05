@@ -62,3 +62,9 @@ header {
     
     margin-right: 30px;
 }
+
+#searchedCity {
+    display: flex;
+    flex-direction: column;
+    
+}

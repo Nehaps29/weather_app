@@ -193,13 +193,33 @@ function getLocation(){
   console.log(displaySelectedCity);
   searchedCityEl.innerHTML = "";
   for (var i =0; i<displaySelectedCity.length; i++){
-    var oldCity = document.createElement("div");
+    var oldCity = document.createElement("button");
+    //li.setAttribute("onclick","valid;");
     oldCity.setAttribute("id", displaySelectedCity[i]);
     oldCity.innerHTML = displaySelectedCity[i];
-    console.log(displaySelectedCity[i]);
-    
+    console.log(displaySelectedCity[i]);    
     searchedCityEl.append(oldCity);
    }
-  
+  //oldCity.addEventListener('click',getPreviousLocation);
 }
+searchedCityEl.addEventListener('click',getPreviousLocation);
 
+function getPreviousLocation(event){
+  event.preventDefault();
+  var searchInputVal = event.target.textContent;
+  console.log(searchInputVal);
+
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${searchInputVal}&appid=${key}&exclude=hourly&units=imperial`)
+  //fetch(`https://api.openweathermap.org/data/2.5/forecast?q=lat={lat}&lon={lon}&appid=${key}&units=imperial`)
+  .then(function (response) {
+    return response.json();
+  }) 
+  .then(function (data) {
+    console.log(data);
+    console.log(data.city.coord.lat);
+    console.log(data.city.coord.lon);
+    var lat = data.city.coord.lat;
+    var lon = data.city.coord.lon;
+    getDetails(lat,lon);
+  })
+}
