@@ -3,8 +3,10 @@ var cityName = "";
 console.log(cityName);
 var displayCityEl = document.querySelector(".displayCity");
 var fiveDaysEl = document.querySelector(".fiveDays");
+var searchedCityEl = document.querySelector(".searchedCity")
 //console.log(api.openweathermap.org/data/2.5/forecast)
-var current_day 
+var current_day;
+var selected_city = JSON.parse(localStorage.getItem('city_local')) || [];
 
 function getDetails(lat, lon){
     
@@ -18,21 +20,6 @@ function getDetails(lat, lon){
   .then(function (data) {
    
     console.log(data);
-    //console.log(data.list.length);
-    //console.log(data.list[0].dt_txt);
-    //console.log()
-    //console.log(data.list[0].main.temp);
-    //console.log(data.list[0].main.humidity);
-    //console.log(data.list[0].wind.speed);
-    //console.log(data.list[0].weather[0].main);
-    //console.log(data.list[0].weather[0].icon);
-   
-    //console.log(data.list[8].dt_txt);
-    //console.log(data.list[8].main.temp);
-    //console.log(data.list[8].main.humidity);
-   // console.log(data.list[8].wind.speed);
-    //console.log(data.list[8].weather[0].main);
-    //console.log(data.list[8].weather[0].icon);
     var icon = document.createElement("div");
     var temp = document.createElement("div");
     var humidity = document.createElement("div");
@@ -54,6 +41,7 @@ function getDetails(lat, lon){
     today.append(temp);
     today.append(humidity);
     today.append(speed);
+    today.append(icon);
     displayCityEl.append(today);
     var day1 = document.createElement("div");
     var day2 = document.createElement("div");
@@ -117,6 +105,11 @@ function getDetails(lat, lon){
 
 function getLocation(){
   cityName = document.getElementById("city").value;
+  if (!(selected_city.includes(cityName))){
+    selected_city.push(cityName)
+  }
+  
+  localStorage.setItem("city_local", JSON.stringify(selected_city));
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${key}&exclude=hourly&units=imperial`)
   //fetch(`https://api.openweathermap.org/data/2.5/forecast?q=lat={lat}&lon={lon}&appid=${key}&units=imperial`)
   .then(function (response) {
@@ -130,4 +123,15 @@ function getLocation(){
     var lon = data.city.coord.lon;
     getDetails(lat,lon);
   })
+  var displaySelectedCity =  localStorage.getItem('city_local');
+  displaySelectedCity = JSON.parse(displaySelectedCity);
+  console.log(displaySelectedCity);
+  for (var i =0; i<displaySelectedCity.length; i++){
+    var oldCity = document.createElement("div");
+    oldCity.innerHTML = displaySelectedCity[i];
+    console.log(displaySelectedCity[i]);
+    searchedCityEl.append(oldCity);
+   }
+  
 }
+
