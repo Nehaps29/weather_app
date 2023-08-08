@@ -1,14 +1,14 @@
 # weather_app
 
-## Password Generator
+## Weather App
 My motivation behind creating this app was to get weather forecast for next 5 days. This app is build with using openweather API (which requires key authentication). I have used current weather and forecast API for this app. It has local storage which show already searched cities. Any incorrect city name will not show any data. The data is displayed in Imperial units
 
 ## Installation
-Browser to open the link: 
+Browser to open the link: https://nehaps29.github.io/weather_app/
 
 App looks like below picture:
 
-![Getting Started](./assets/images/simple_password.JPG)
+![Getting Started](./assets/images/pic.JPG)
 
 
 ## Credits
