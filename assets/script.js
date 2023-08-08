@@ -1,5 +1,6 @@
 var key =  "934a06e15a82cd3d1449ed66cf1851d5";
 var cityName = "";
+var searchBtn = document.querySelector("#submit-city");
 console.log(cityName);
 var displayCityEl = document.querySelector(".displayCity");
 var fiveDaysEl = document.querySelector(".fiveDays");
@@ -10,7 +11,7 @@ var day3El = document.querySelector("#day3");
 var day4El = document.querySelector("#day4");
 var day5El = document.querySelector("#day5");
 var selected_city = JSON.parse(localStorage.getItem('city_local')) || [];
-
+// get and diaplying data from forecast API
 function getDetails(lat, lon){
     
     cityName = document.getElementById("city").value;
@@ -20,15 +21,17 @@ function getDetails(lat, lon){
     return response.json();
   }) 
   .then(function (data) {
+    console.log(data);
     var icon1 = document.createElement("img");
     var temp1 = document.createElement("div");
     var humidity1 = document.createElement("div");
     var speed1 = document.createElement("div");
     var date1 = document.createElement("div");
-    date1.innerHTML = "Date: "+data.list[7].dt_txt.split(" ")[0].toString();
-    humidity1.innerHTML = "Humidity: " + data.list[7].main.humidity;
-    speed1.innerHTML = "Speed: " + data.list[7].wind.speed;
-    temp1.innerHTML = "Temp: " + data.list[7].main.temp;
+    var formattedDate1 = dayjs(data.list[7].dt_txt.split(" ")[0].toString()).format('DD-MMM-YYYY');
+    date1.innerHTML = "Date: "+formattedDate1;
+    humidity1.innerHTML = "Humidity: " + data.list[7].main.humidity + " %";
+    speed1.innerHTML = "Speed: " + data.list[7].wind.speed + " mph";
+    temp1.innerHTML = "Temp: " + data.list[7].main.temp + " °F";
     icon_code1 = data.list[7].weather[0].icon;
     icon1.src = `https://openweathermap.org/img/wn/${icon_code1}@2x.png`
     var day1 = document.createElement("div");
@@ -45,10 +48,11 @@ function getDetails(lat, lon){
     var humidity2 = document.createElement("div");
     var speed2 = document.createElement("div");
     var date2 = document.createElement("div");
-    date2.innerHTML = "Date: "+data.list[15].dt_txt.split(" ")[0].toString();
-    humidity2.innerHTML = "Humidity: " + data.list[15].main.humidity;
-    speed2.innerHTML = "Speed: " + data.list[15].wind.speed;
-    temp2.innerHTML = "Temp: " + data.list[15].main.temp;
+    var formattedDate2 = dayjs(data.list[15].dt_txt.split(" ")[0].toString()).format('DD-MMM-YYYY');
+    date2.innerHTML = "Date: "+ formattedDate2;
+    humidity2.innerHTML = "Humidity: " + data.list[15].main.humidity + " %";
+    speed2.innerHTML = "Speed: " + data.list[15].wind.speed + " mph";
+    temp2.innerHTML = "Temp: " + data.list[15].main.temp + " °F";;
     icon_code2 = data.list[15].weather[0].icon;
     icon2.src = `https://openweathermap.org/img/wn/${icon_code2}@2x.png`
     var day2 = document.createElement("div");
@@ -65,12 +69,13 @@ function getDetails(lat, lon){
     var humidity3 = document.createElement("div");
     var speed3 = document.createElement("div");
     var date3 = document.createElement("div");
-    date3.innerHTML = "Date: "+data.list[23].dt_txt.split(" ")[0].toString();
-    humidity3.innerHTML = "Humidity: " + data.list[23].main.humidity;
-    speed3.innerHTML = "Speed: " + data.list[23].wind.speed;
-    temp3.innerHTML = "Temp: " + data.list[23].main.temp;
+    var formattedDate3 = dayjs(data.list[23].dt_txt.split(" ")[0].toString()).format('DD-MMM-YYYY');
+    date3.innerHTML = "Date: "+formattedDate3;
+    humidity3.innerHTML = "Humidity: " + data.list[23].main.humidity + " %";
+    speed3.innerHTML = "Speed: " + data.list[23].wind.speed + " mph";
+    temp3.innerHTML = "Temp: " + data.list[23].main.temp + " °F";;
     icon_code3 = data.list[23].weather[0].icon;
-    icon3.src = `https://openweathermap.org/img/wn/${icon_code3}@2x.png`
+    icon3.src = `https://openweathermap.org/img/wn/${icon_code3}@2x.png` // getting icon-code from forecast API and putting it in th URL, to get that particular icon
     var day3 = document.createElement("div");
     day3.append(date3);
     day3.append(temp3);
@@ -86,10 +91,11 @@ function getDetails(lat, lon){
     var humidity4 = document.createElement("div");
     var speed4 = document.createElement("div");
     var date4 = document.createElement("div");
-    date4.innerHTML = "Date: "+data.list[31].dt_txt.split(" ")[0].toString();
-    humidity4.innerHTML = "Humidity: " + data.list[31].main.humidity;
-    speed4.innerHTML = "Speed: " + data.list[31].wind.speed;
-    temp4.innerHTML = "Temp: " + data.list[31].main.temp;
+    var formattedDate4 = dayjs(data.list[31].dt_txt.split(" ")[0].toString()).format('DD-MMM-YYYY');
+    date4.innerHTML = "Date: "+formattedDate4;
+    humidity4.innerHTML = "Humidity: " + data.list[31].main.humidity + " %";
+    speed4.innerHTML = "Speed: " + data.list[31].wind.speed + " mph";
+    temp4.innerHTML = "Temp: " + data.list[31].main.temp + " °F";;
     icon_code4 = data.list[31].weather[0].icon;
     icon4.src = `https://openweathermap.org/img/wn/${icon_code4}@2x.png`
     var day4 = document.createElement("div");
@@ -108,10 +114,11 @@ function getDetails(lat, lon){
     var humidity5 = document.createElement("div");
     var speed5 = document.createElement("div");
     var date5 = document.createElement("div");
-    date5.innerHTML = "Date: "+data.list[39].dt_txt.split(" ")[0].toString();
-    humidity5.innerHTML = "Humidity: " + data.list[39].main.humidity;
-    speed5.innerHTML = "Speed: " + data.list[39].wind.speed;
-    temp5.innerHTML = "Temp: " + data.list[39].main.temp;
+    var formattedDate5 = dayjs(data.list[39].dt_txt.split(" ")[0].toString()).format('DD-MMM-YYYY');
+    date5.innerHTML = "Date: "+formattedDate5;//create new element and pass it to dayjs
+    humidity5.innerHTML = "Humidity: " + data.list[39].main.humidity + " %";
+    speed5.innerHTML = "Speed: " + data.list[39].wind.speed + " mph";
+    temp5.innerHTML = "Temp: " + data.list[39].main.temp + " °F";;
     icon_code5 = data.list[39].weather[0].icon;
     icon5.src = `https://openweathermap.org/img/wn/${icon_code5}@2x.png`
     var day5 = document.createElement("div");
@@ -126,7 +133,7 @@ function getDetails(lat, lon){
     
   });
 }
-
+// geting data form current weather API
 function getCurrent (lat1, lon1){
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat1}&lon=${lon1}&appid=${key}&units=imperial`)
 
@@ -135,7 +142,6 @@ function getCurrent (lat1, lon1){
   }) 
   .then(function (data) {
    
-    console.log(data);
     var icon = document.createElement("img");
     var temp = document.createElement("div");
     var humidity = document.createElement("div");
@@ -143,10 +149,10 @@ function getCurrent (lat1, lon1){
     var date = document.createElement("div");
     icon_code = data.weather[0].icon;
     var current_date = dayjs();
-    date.innerHTML = current_date.format('YYYY-MM-DD') + " (YYYY-MM-DD)";
-    humidity.innerHTML = "Humidity: " + data.main.humidity;
-    speed.innerHTML = "Speed: " + data.wind.speed;
-    temp.innerHTML = "Temp: " + data.main.temp;
+    date.innerHTML = current_date.format('DD-MMM-YYYY') ;
+    humidity.innerHTML = "Humidity: " + data.main.humidity + " %";
+    speed.innerHTML = "Speed: " + data.wind.speed + " mph";
+    temp.innerHTML = "Temp: " + data.main.temp + " °F";;
     icon.src = `https://openweathermap.org/img/wn/${icon_code}@2x.png`
     var today = document.createElement("div");
     today.append(date);
@@ -161,17 +167,15 @@ function getCurrent (lat1, lon1){
   })
 
 }
-
+// function to get data as per city, so that we can get lat and lon
 function getLocation(){
-  cityName = document.getElementById("city").value;
-  if (!(selected_city.includes(cityName))){
-    selected_city.push(cityName)
-  }
-  
-  localStorage.setItem("city_local", JSON.stringify(selected_city));
+  cityName = document.getElementById("city").value.toUpperCase();
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${key}&exclude=hourly&units=imperial`)
   .then(function (response) {
-    return response.json();
+    if (response.ok){
+      return response.json();
+    }
+    
   
   }) 
   .then(function (data) {
@@ -182,20 +186,29 @@ function getLocation(){
     var lon = data.city.coord.lon;
     getCurrent(lat,lon);
     getDetails(lat,lon);
+    if (!(selected_city.includes(data.city.name))){
+      selected_city.push(data.city.name)
+    }
+    localStorage.setItem("city_local", JSON.stringify(selected_city));
+    var displaySelectedCity =  JSON.parse(localStorage.getItem('city_local'));
+    console.log(displaySelectedCity);
+    searchedCityEl.innerHTML = "";
+    for (var i =0; i<displaySelectedCity.length; i++){
+      var oldCity = document.createElement("button");
+      oldCity.setAttribute("id", displaySelectedCity[i]);
+      oldCity.innerHTML = displaySelectedCity[i];
+      console.log(displaySelectedCity[i]);    
+      searchedCityEl.append(oldCity);
+     }
   })
-  var displaySelectedCity =  localStorage.getItem('city_local');
-  displaySelectedCity = JSON.parse(displaySelectedCity);
-  console.log(displaySelectedCity);
-  searchedCityEl.innerHTML = "";
-  for (var i =0; i<displaySelectedCity.length; i++){
-    var oldCity = document.createElement("button");
-    oldCity.setAttribute("id", displaySelectedCity[i]);
-    oldCity.innerHTML = displaySelectedCity[i];
-    console.log(displaySelectedCity[i]);    
-    searchedCityEl.append(oldCity);
-   }
+  .catch(function (err) {
+    console.error(err);
+    console.log("here");
+  
+  })
+ 
 }
-searchedCityEl.addEventListener('click',getPreviousLocation);
+searchedCityEl.addEventListener('click',getPreviousLocation); // adding event listner to get already searched city 
 
 function getPreviousLocation(event){
   event.preventDefault();
@@ -217,3 +230,5 @@ function getPreviousLocation(event){
     getDetails(lat,lon);
   })
 }
+
+searchBtn.addEventListener("click", function(){getLocation()}); // adding listner to get data for current day and forecast data
