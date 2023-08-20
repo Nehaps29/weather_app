@@ -47,8 +47,9 @@ header {
 
 .displayCity {
     
-    border: solid 1px;
+    border-bottom: solid 1px purple;
     width: 100%;
+    text-align: center;
 }
 
 .fiveDays {
@@ -58,9 +59,10 @@ header {
     width: 100%;
 }
 
-#day1, #day2, #day3, #day4, #day5 {
+.five{
+    margin-top: 5px;
+    margin: 10px;
     
-    margin-right: 30px;
 }
 
 #searchedCity {
