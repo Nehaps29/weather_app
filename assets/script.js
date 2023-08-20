@@ -141,7 +141,8 @@ function getCurrent (lat1, lon1){
     return response.json();
   }) 
   .then(function (data) {
-   
+    console.log(data);
+    //var cityN = document.createElement("div");
     var icon = document.createElement("img");
     var temp = document.createElement("div");
     var humidity = document.createElement("div");
@@ -149,7 +150,7 @@ function getCurrent (lat1, lon1){
     var date = document.createElement("div");
     icon_code = data.weather[0].icon;
     var current_date = dayjs();
-    date.innerHTML = current_date.format('DD-MMM-YYYY') ;
+    date.innerHTML = current_date.format('DD-MMM-YYYY') +", " +data.name;
     humidity.innerHTML = "Humidity: " + data.main.humidity + " %";
     speed.innerHTML = "Speed: " + data.wind.speed + " mph";
     temp.innerHTML = "Temp: " + data.main.temp + " °F";;
@@ -179,7 +180,7 @@ function getLocation(){
   
   }) 
   .then(function (data) {
-    console.log(data);
+   // console.log(data);
     console.log(data.city.coord.lat);
     console.log(data.city.coord.lon);
     var lat = data.city.coord.lat;
