@@ -26,12 +26,14 @@ function getDetails(lat, lon){
     //loop to get 5 days data
     for (var i =7; i<40; i=i+8){
       var icon1 = document.createElement("img");
+      var city1 = document.createElement("div");
     var temp1 = document.createElement("div");
     var humidity1 = document.createElement("div");
     var speed1 = document.createElement("div");
     var date1 = document.createElement("div");
     var formattedDate1 = dayjs(data.list[i].dt_txt.split(" ")[0].toString()).format('DD-MMM-YYYY');
     date1.innerHTML = "Date: "+formattedDate1;
+    city1.innerHTML = "City: "+ data.city.name;
     humidity1.innerHTML = "Humidity: " + data.list[i].main.humidity + " %";
     speed1.innerHTML = "Speed: " + data.list[i].wind.speed + " mph";
     temp1.innerHTML = "Temp: " + data.list[i].main.temp + " °F";
@@ -39,6 +41,7 @@ function getDetails(lat, lon){
     icon1.src = `https://openweathermap.org/img/wn/${icon_code1}@2x.png`
     var day1 = document.createElement("div");
     day1.append(date1);
+    day1.append(city1);
     day1.append(temp1);
     day1.append(humidity1);
     day1.append(speed1);
@@ -111,7 +114,7 @@ function getLocation(){
       selected_city.push(data.city.name)
     }
     localStorage.setItem("city_local", JSON.stringify(selected_city));
-    var displaySelectedCity =  JSON.parse(localStorage.getItem('city_local'));
+    /*var displaySelectedCity =  JSON.parse(localStorage.getItem('city_local'));
     console.log(displaySelectedCity);
     searchedCityEl.innerHTML = "";
     for (var i =0; i<displaySelectedCity.length; i++){
@@ -120,7 +123,9 @@ function getLocation(){
       oldCity.innerHTML = displaySelectedCity[i];
       console.log(displaySelectedCity[i]);    
       searchedCityEl.append(oldCity);
-     }
+     }*/
+     init ();
+
   })
   .catch(function (err) {
     console.error(err);
@@ -153,3 +158,17 @@ function getPreviousLocation(event){
 }
 
 searchBtn.addEventListener("click", function(){getLocation()}); // adding listner to get data for current day and forecast data
+
+function init () {
+  var displaySelectedCityOld =  JSON.parse(localStorage.getItem('city_local'));
+  searchedCityEl.innerHTML = "";
+  for (var i =0; i<displaySelectedCityOld.length; i++){
+      var searchedCity = document.createElement("button");
+      searchedCity.setAttribute("id", displaySelectedCityOld[i]);
+      searchedCity.innerHTML = displaySelectedCityOld[i];
+      console.log(displaySelectedCityOld[i]);    
+      searchedCityEl.append(searchedCity);
+     }
+}
+
+init();
