@@ -11,7 +11,7 @@ var day3El = document.querySelector("#day3");
 var day4El = document.querySelector("#day4");
 var day5El = document.querySelector("#day5");
 var selected_city = JSON.parse(localStorage.getItem('city_local')) || [];
-// get and diaplying data from forecast API
+// getting and displaying data from forecast API
 function getDetails(lat, lon){
     
     cityName = document.getElementById("city").value;
@@ -114,16 +114,7 @@ function getLocation(){
       selected_city.push(data.city.name)
     }
     localStorage.setItem("city_local", JSON.stringify(selected_city));
-    /*var displaySelectedCity =  JSON.parse(localStorage.getItem('city_local'));
-    console.log(displaySelectedCity);
-    searchedCityEl.innerHTML = "";
-    for (var i =0; i<displaySelectedCity.length; i++){
-      var oldCity = document.createElement("button");
-      oldCity.setAttribute("id", displaySelectedCity[i]);
-      oldCity.innerHTML = displaySelectedCity[i];
-      console.log(displaySelectedCity[i]);    
-      searchedCityEl.append(oldCity);
-     }*/
+    
      init ();
 
   })
@@ -158,7 +149,7 @@ function getPreviousLocation(event){
 }
 
 searchBtn.addEventListener("click", function(){getLocation()}); // adding listner to get data for current day and forecast data
-
+// function to get all cities stored in local storage
 function init () {
   var displaySelectedCityOld =  JSON.parse(localStorage.getItem('city_local'));
   searchedCityEl.innerHTML = "";
